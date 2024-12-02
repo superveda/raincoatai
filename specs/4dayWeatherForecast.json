@@ -1,0 +1,94 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Real-time API weather services",
+    "description": "Real-time API documentation of weather services",
+    "contact": {
+      "email": "feedback@data.gov.sg"
+    },
+    "version": "1.0.11"
+  },
+  "servers": [
+    {
+      "url": "https://api.data.gov.sg/v1/environment"
+    }
+  ],
+  "paths": {
+    "/4-day-weather-forecast": {
+      "get": {
+        "summary": "Get 4-day weather forecast",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "description": "Date in YYYY-MM-DD format"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "forecasts": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "date": { "type": "string" },
+                                "temperature": {
+                                  "type": "object",
+                                  "properties": {
+                                    "low": { "type": "number" },
+                                    "high": { "type": "number" }
+                                  }
+                                },
+                                "relative_humidity": {
+                                  "type": "object",
+                                  "properties": {
+                                    "low": { "type": "number" },
+                                    "high": { "type": "number" }
+                                  }
+                                },
+                                "wind": {
+                                  "type": "object",
+                                  "properties": {
+                                    "speed": {
+                                      "type": "object",
+                                      "properties": {
+                                        "low": { "type": "number" },
+                                        "high": { "type": "number" }
+                                      }
+                                    },
+                                    "direction": { "type": "string" }
+                                  }
+                                },
+                                "forecast": { "type": "string" }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+} 
