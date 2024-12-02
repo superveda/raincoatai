@@ -1,6 +1,10 @@
 import { NextResponse } from 'next/server';
 import { getWeatherForecast, mapWeatherCondition } from '@/services/weather';
 
+// Define the dynamic and runtime configurations
+export const dynamic = 'force-dynamic'; // Forces dynamic rendering
+export const runtime = 'edge'; // Set the runtime to edge
+
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);

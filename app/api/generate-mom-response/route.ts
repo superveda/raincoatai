@@ -7,6 +7,8 @@ const openai = new OpenAI({
   baseURL: 'https://api.openai.com/v1',
 });
 
+export const runtime = 'edge'; // Optional: specify runtime if needed
+
 export async function POST(req: Request) {
   try {
     // Validate API key
@@ -75,13 +77,4 @@ export async function POST(req: Request) {
       { status: 500 }
     );
   }
-}
-
-// Add bodyParser config
-export const config = {
-  api: {
-    bodyParser: {
-      sizeLimit: '1mb',
-    },
-  },
-}; 
+} 
